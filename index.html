@@ -67,9 +67,6 @@
     .photo-multiply {
       mix-blend-mode: multiply;
     }
-    .logo-blend-dark {
-      filter: brightness(0) invert(1) drop-shadow(0 2px 8px rgba(0, 0, 0, 0.25));
-    }
     .headline-lockup-card {
       background: linear-gradient(180deg, #FFFFFF 0%, #FAF5FF 100%);
       box-shadow: 0 22px 48px -12px rgba(20, 4, 48, 0.55), 0 0 0 3px rgba(251, 191, 36, 0.55);
@@ -85,8 +82,8 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
       <div class="flex items-center gap-3">
         <a href="#" class="flex items-center gap-2.5 group focus:outline-none">
-          <div id="navbar-logo-container" class="h-11 flex items-center justify-center overflow-hidden group-hover:scale-105 transition">
-            <img src="./images/logo-exodrinks.png" data-fallback="image_337a81.png" onerror="if(!this.dataset.triedFallback){this.dataset.triedFallback='1';this.src=this.dataset.fallback;}" alt="EXO drinks Logo" class="h-10 w-auto object-contain logo-blend-dark" />
+          <div id="navbar-logo-container" class="h-11 w-28 flex items-center justify-center overflow-hidden rounded-lg bg-white group-hover:scale-105 transition">
+            <img src="./img/logo.jpeg" alt="Logo Exodrinks" class="h-11 w-28 object-cover rounded-lg bg-white" />
           </div>
           <span class="text-[11px] font-extrabold text-amber-300 tracking-wider uppercase">In Bali</span>
         </a>
@@ -584,8 +581,8 @@
       <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-8 pb-8 border-b border-white/10">
         <div>
           <div class="flex items-center gap-3">
-            <div id="footer-logo-container" class="h-10 flex items-center justify-center overflow-hidden">
-              <img src="./images/logo-exodrinks.png" data-fallback="image_337a81.png" onerror="if(!this.dataset.triedFallback){this.dataset.triedFallback='1';this.src=this.dataset.fallback;}" alt="EXO drinks Logo" class="h-9 w-auto object-contain logo-blend-dark" />
+            <div id="footer-logo-container" class="h-11 w-28 flex items-center justify-center overflow-hidden rounded-lg bg-white">
+              <img src="./img/logo.jpeg" alt="Logo Exodrinks" class="h-11 w-28 object-cover rounded-lg bg-white" />
             </div>
             <span class="text-amber-300 font-extrabold text-sm uppercase tracking-wider">In Bali</span>
           </div>
@@ -1012,7 +1009,7 @@
     const ADMIN_SESSION_KEY = "exodrinks_bali_admin_unlocked_v1";
 
     const PHOTO_SLOTS_META = [
-      { key: "logoBrand", label: "Logo Brand Exodrinks", defaultPath: "./images/logo-exodrinks.png", productId: null },
+      { key: "logoBrand", label: "Logo Brand Exodrinks", defaultPath: "./img/logo.jpeg", productId: null },
       { key: "puraBg", label: "Background Pura Bali", defaultPath: "./img/Tangkapan Layar 2026-11-27 pukul 00.29.16.png", productId: null },
       { key: "heroMascot", label: "Es Teler Ori", defaultPath: "./img/Tangkapan Layar 2026-11-27 pukul 00.05.41.png", productId: null },
       { key: "oriKecilPhoto", label: "ES TELER ORI KECIL", defaultPath: "./img/Tangkapan Layar 2026-11-27 pukul 00.05.41.png", productId: "ori-kecil" },
@@ -1027,7 +1024,7 @@
       adminPin: "123456",
       whatsappNumber: "6281266910111",
       images: {
-        logoBrand: "./images/logo-exodrinks.png",
+        logoBrand: "./img/logo.jpeg",
         puraBg: "./img/Tangkapan Layar 2026-11-27 pukul 00.29.16.png",
         heroMascot: "./img/Tangkapan Layar 2026-11-27 pukul 00.05.41.png",
         oriKecilPhoto: "./img/Tangkapan Layar 2026-11-27 pukul 00.05.41.png",
@@ -1160,7 +1157,7 @@
     };
 
     const githubPathsState = {
-      logoBrand: "./images/logo-exodrinks.png",
+      logoBrand: "./img/logo.jpeg",
       puraBg: "./img/Tangkapan Layar 2026-11-27 pukul 00.29.16.png",
       heroMascot: "./img/Tangkapan Layar 2026-11-27 pukul 00.05.41.png",
       oriKecilPhoto: "./img/Tangkapan Layar 2026-11-27 pukul 00.05.41.png",
@@ -1280,8 +1277,8 @@
       }
     }
 
-    function renderDefaultLogoMarkup(sizeClass = "h-10") {
-      return `<img src="./images/logo-exodrinks.png" data-fallback="image_337a81.png" onerror="if(!this.dataset.triedFallback){this.dataset.triedFallback='1';this.src=this.dataset.fallback;}" alt="EXO drinks Logo" class="${sizeClass} w-auto object-contain logo-blend-dark" />`;
+    function renderDefaultLogoMarkup(sizeClass = "h-11") {
+      return `<img src="./img/logo.jpeg" alt="Logo Exodrinks" class="${sizeClass} w-28 object-cover rounded-lg bg-white" />`;
     }
 
     function loadSavedOriginalPhotos() {
@@ -1413,7 +1410,7 @@
       if (draftSlotPhotoDataUrl) {
         APP_DATA.images[slotKey] = draftSlotPhotoDataUrl;
       } else {
-        APP_DATA.images[slotKey] = slotKey === "logoBrand" ? (newPath || "./images/logo-exodrinks.png") : "";
+        APP_DATA.images[slotKey] = slotKey === "logoBrand" ? (newPath || "./img/logo.jpeg") : "";
       }
 
       syncSlotNamesToProducts();
@@ -1930,7 +1927,7 @@
     function resetPhotoSlot(slotKey) {
       if (!isAdminUnlocked) { openAdminPinModal(() => resetPhotoSlot(slotKey)); return; }
       const meta = PHOTO_SLOTS_META.find(m => m.key === slotKey);
-      APP_DATA.images[slotKey] = slotKey === "logoBrand" ? "./images/logo-exodrinks.png" : "";
+      APP_DATA.images[slotKey] = slotKey === "logoBrand" ? "./img/logo.jpeg" : "";
       if (meta) {
         githubPathsState[slotKey] = meta.defaultPath;
         slotLabelsState[slotKey] = meta.label;
@@ -1966,13 +1963,11 @@
       const navLogo = document.getElementById("navbar-logo-container");
       const footerLogo = document.getElementById("footer-logo-container");
       if (APP_DATA.images.logoBrand) {
-        const isLocalDefault = APP_DATA.images.logoBrand === "./images/logo-exodrinks.png";
-        const fallbackAttr = isLocalDefault ? ` data-fallback="image_337a81.png" onerror="if(!this.dataset.triedFallback){this.dataset.triedFallback='1';this.src=this.dataset.fallback;}"` : "";
-        navLogo.innerHTML = `<img src="${APP_DATA.images.logoBrand}"${fallbackAttr} alt="${slotLabelsState.logoBrand}" class="h-10 w-auto object-contain logo-blend-dark" />`;
-        footerLogo.innerHTML = `<img src="${APP_DATA.images.logoBrand}"${fallbackAttr} alt="${slotLabelsState.logoBrand}" class="h-9 w-auto object-contain logo-blend-dark" />`;
+        navLogo.innerHTML = `<img src="${APP_DATA.images.logoBrand}" alt="${slotLabelsState.logoBrand}" class="h-11 w-28 object-cover rounded-lg bg-white" />`;
+        footerLogo.innerHTML = `<img src="${APP_DATA.images.logoBrand}" alt="${slotLabelsState.logoBrand}" class="h-11 w-28 object-cover rounded-lg bg-white" />`;
       } else {
-        navLogo.innerHTML = renderDefaultLogoMarkup("h-10");
-        footerLogo.innerHTML = renderDefaultLogoMarkup("h-9");
+        navLogo.innerHTML = renderDefaultLogoMarkup();
+        footerLogo.innerHTML = renderDefaultLogoMarkup();
       }
 
       const puraImg = document.getElementById("hero-pura-img");
@@ -2414,8 +2409,6 @@
       grid.innerHTML = PHOTO_SLOTS_META.map((slot, index) => {
         const src = APP_DATA.images[slot.key];
         const currentLabel = slotLabelsState[slot.key] || slot.label;
-        const isDefaultLogo = slot.key === "logoBrand" && src === "./images/logo-exodrinks.png";
-        const fallbackAttr = isDefaultLogo ? ` data-fallback="image_337a81.png" onerror="if(!this.dataset.triedFallback){this.dataset.triedFallback='1';this.src=this.dataset.fallback;}"` : "";
         return `
           <div class="p-4 rounded-2xl bg-baliPurple-50 border border-baliPurple-200 flex flex-col justify-between gap-3">
             <div>
@@ -2425,7 +2418,7 @@
 
             <div class="w-full h-28 rounded-xl bg-white border border-baliPurple-200 flex items-center justify-center overflow-hidden p-2">
               ${src
-                ? `<img src="${src}"${fallbackAttr} alt="${currentLabel}" class="w-full h-full object-contain rounded-lg" />`
+                ? `<img src="${src}" alt="${currentLabel}" class="w-full h-full object-contain rounded-lg" />`
                 : `<span class="text-xs text-baliPurple-950/45 font-bold">Belum ada foto</span>`
               }
             </div>
